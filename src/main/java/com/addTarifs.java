@@ -160,6 +160,10 @@ public class addTarifs extends javax.swing.JFrame {
 
             // Récupération de la valeur actuelle du JSpinner
             int montant = (int) montant_tarif.getValue();
+            if(montant<=0){
+                JOptionPane.showMessageDialog(null, "Tarif non valide");
+                return;
+            }
 
             // Création d'un objet Tarif avec les données saisies
             Tarif nouveauTarif = new Tarif(numTarif, diplome, categor, montant);
@@ -192,6 +196,10 @@ public class addTarifs extends javax.swing.JFrame {
 
             // Récupération de la valeur actuelle du JSpinner
             int montant = (int) montant_tarif.getValue();
+            if(montant<=0){
+                JOptionPane.showMessageDialog(null, "Tarif non valide");
+                return;
+            }
             Tarif nouveauTarif = new Tarif(numTarif, diplome, categor, montant);
             Connection connection = bd.getConnection("jdbc:postgresql://localhost:5432/Java", "postgres", "madarauchiwa");
             boolean modificationReussie = tarifBD.modifierTarif(nouveauTarif, connection);

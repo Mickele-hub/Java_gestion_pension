@@ -391,6 +391,7 @@ public class addPersons extends javax.swing.JFrame {
     }
     // Méthode pour remplir les champs avec les données d'une personne sélectionnée
 public void remplirChamps(String IM, String nom, String prenom, Date date, String diplome, String contact, Boolean statut, String situation, String nomConjoint, String prenomConjoint) {
+        chargerDiplomes();
         ImPerson.setText(IM);
         nomPerson.setText(nom);
         prenomPerson.setText(prenom);
@@ -408,26 +409,31 @@ public void remplirChamps(String IM, String nom, String prenom, Date date, Strin
         AjouterPersonne.setText("Modifier");
         ImPerson.setEditable(false);
 }
-public void chargerDiplomes() {
+public final void chargerDiplomes() {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     try {
         // Connexion à la base de données
+        System.out.println("Connecting to the database...");
         connection = bd.getConnection("jdbc:postgresql://localhost:5432/Java", "postgres", "madarauchiwa");
 
         // Requête pour récupérer tous les diplômes de la table "tarif"
         String query = "SELECT DISTINCT diplome FROM tarif";
+        System.out.println("Preparing statement...");
         preparedStatement = connection.prepareStatement(query);
         resultSet = preparedStatement.executeQuery();
+        System.out.println("Executing query...");
 
         // Nettoyer le JComboBox avant d'ajouter de nouveaux éléments
         diplome_person.removeAllItems();
+        System.out.println("Cleared JComboBox...");
 
         // Ajouter les diplômes au JComboBox
         while (resultSet.next()) {
             String diplome = resultSet.getString("diplome");
             diplome_person.addItem(diplome);
+            System.out.println("Added diplome: " + diplome);
         }
     } catch (SQLException e) {
         e.printStackTrace();
@@ -448,6 +454,7 @@ public void chargerDiplomes() {
         }
     }
 }
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

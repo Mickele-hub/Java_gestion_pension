@@ -89,6 +89,30 @@ public class hello extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         panelCard = new javax.swing.JPanel();
+        panelHisto = new javax.swing.JPanel();
+        panelTarif = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tarif = new javax.swing.JTable();
+        addTarif = new javax.swing.JButton();
+        deleteTarif = new javax.swing.JButton();
+        modifierTarif = new javax.swing.JButton();
+        actualisé1 = new javax.swing.JButton();
+        panelAcceuil = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        personne = new javax.swing.JTable();
+        addPerson = new javax.swing.JButton();
+        supprimerPersons = new javax.swing.JButton();
+        modifierPersons = new javax.swing.JButton();
+        recherche = new javax.swing.JTextField();
+        like = new javax.swing.JButton();
+        statusVivant = new javax.swing.JButton();
+        mort = new javax.swing.JButton();
+        actualisé2 = new javax.swing.JButton();
+        actua = new javax.swing.JButton();
         panelPayer = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -103,27 +127,6 @@ public class hello extends javax.swing.JFrame {
         date2 = new com.toedter.calendar.JDateChooser();
         dateSearch = new javax.swing.JButton();
         actualisé = new javax.swing.JButton();
-        panelHisto = new javax.swing.JPanel();
-        panelTarif = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tarif = new javax.swing.JTable();
-        addTarif = new javax.swing.JButton();
-        deleteTarif = new javax.swing.JButton();
-        modifierTarif = new javax.swing.JButton();
-        panelAcceuil = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        personne = new javax.swing.JTable();
-        addPerson = new javax.swing.JButton();
-        supprimerPersons = new javax.swing.JButton();
-        modifierPersons = new javax.swing.JButton();
-        recherche = new javax.swing.JTextField();
-        like = new javax.swing.JButton();
-        statusVivant = new javax.swing.JButton();
-        mort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -203,6 +206,305 @@ public class hello extends javax.swing.JFrame {
         jPanel1.getAccessibleContext().setAccessibleDescription("Nav");
 
         panelCard.setLayout(new java.awt.CardLayout());
+
+        panelHisto.setBackground(java.awt.Color.white);
+
+        javax.swing.GroupLayout panelHistoLayout = new javax.swing.GroupLayout(panelHisto);
+        panelHisto.setLayout(panelHistoLayout);
+        panelHistoLayout.setHorizontalGroup(
+            panelHistoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 830, Short.MAX_VALUE)
+        );
+        panelHistoLayout.setVerticalGroup(
+            panelHistoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 556, Short.MAX_VALUE)
+        );
+
+        panelCard.add(panelHisto, "panelHisto");
+
+        panelTarif.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Gestion des pensions des retraités");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 587, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        );
+
+        tarif.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Numero tarif", "Diplome", "Catégorie", "Montant"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tarif);
+
+        addTarif.setText("Ajouter");
+        addTarif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTarifActionPerformed(evt);
+            }
+        });
+
+        deleteTarif.setText("Supprimer");
+        deleteTarif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteTarifActionPerformed(evt);
+            }
+        });
+
+        modifierTarif.setText("Modifier");
+        modifierTarif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifierTarifActionPerformed(evt);
+            }
+        });
+
+        actualisé1.setText("Actualisé");
+        actualisé1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualisé1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelTarifLayout = new javax.swing.GroupLayout(panelTarif);
+        panelTarif.setLayout(panelTarifLayout);
+        panelTarifLayout.setHorizontalGroup(
+            panelTarifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTarifLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTarifLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(actualisé1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(modifierTarif, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(deleteTarif, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(addTarif, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+        panelTarifLayout.setVerticalGroup(
+            panelTarifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTarifLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(panelTarifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addTarif)
+                    .addComponent(deleteTarif)
+                    .addComponent(modifierTarif)
+                    .addComponent(actualisé1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+        );
+
+        panelCard.add(panelTarif, "panelTarif");
+
+        panelAcceuil.setBackground(java.awt.Color.white);
+
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Gestion des pensions des retraités");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        );
+
+        personne.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "IM", "Nom", "Prenom", "Date", "Diplome", "Contact", "Statut", "Situation", "Nom conjoint", "Prenom conjoint"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(personne);
+        if (personne.getColumnModel().getColumnCount() > 0) {
+            personne.getColumnModel().getColumn(2).setHeaderValue("Prenom");
+            personne.getColumnModel().getColumn(3).setHeaderValue("Date");
+            personne.getColumnModel().getColumn(4).setHeaderValue("Diplome");
+            personne.getColumnModel().getColumn(5).setHeaderValue("Contact");
+            personne.getColumnModel().getColumn(6).setHeaderValue("Statut");
+            personne.getColumnModel().getColumn(7).setHeaderValue("Situation");
+            personne.getColumnModel().getColumn(8).setHeaderValue("Nom conjoint");
+            personne.getColumnModel().getColumn(9).setHeaderValue("Prenom conjoint");
+        }
+
+        addPerson.setLabel("Ajouter");
+        addPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPersonActionPerformed(evt);
+            }
+        });
+
+        supprimerPersons.setText("Supprimer");
+        supprimerPersons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprimerPersonsActionPerformed(evt);
+            }
+        });
+
+        modifierPersons.setText("Modifier");
+        modifierPersons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifierPersonsActionPerformed(evt);
+            }
+        });
+
+        like.setText("Rechercer");
+        like.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                likeActionPerformed(evt);
+            }
+        });
+
+        statusVivant.setText("Vivant");
+        statusVivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusVivantActionPerformed(evt);
+            }
+        });
+
+        mort.setText("Décedé");
+        mort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mortActionPerformed(evt);
+            }
+        });
+
+        actualisé2.setText("Actualisé");
+        actualisé2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualisé2ActionPerformed(evt);
+            }
+        });
+
+        actua.setText("Actualisé");
+        actua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actuaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelAcceuilLayout = new javax.swing.GroupLayout(panelAcceuil);
+        panelAcceuil.setLayout(panelAcceuilLayout);
+        panelAcceuilLayout.setHorizontalGroup(
+            panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelAcceuilLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAcceuilLayout.createSequentialGroup()
+                        .addComponent(statusVivant)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mort)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(modifierPersons, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(supprimerPersons, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(addPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAcceuilLayout.createSequentialGroup()
+                        .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(like)
+                        .addGap(44, 44, 44)
+                        .addComponent(actua, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAcceuilLayout.createSequentialGroup()
+                    .addGap(361, 361, 361)
+                    .addComponent(actualisé2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(362, Short.MAX_VALUE)))
+        );
+        panelAcceuilLayout.setVerticalGroup(
+            panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAcceuilLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(like)
+                    .addComponent(actua))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addPerson)
+                    .addComponent(supprimerPersons)
+                    .addComponent(modifierPersons)
+                    .addComponent(mort)
+                    .addComponent(statusVivant))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAcceuilLayout.createSequentialGroup()
+                    .addGap(265, 265, 265)
+                    .addComponent(actualisé2)
+                    .addContainerGap(266, Short.MAX_VALUE)))
+        );
+
+        addPerson.getAccessibleContext().setAccessibleName("addPerson");
+
+        panelCard.add(panelAcceuil, "panelAcceuil");
 
         panelPayer.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -361,268 +663,6 @@ public class hello extends javax.swing.JFrame {
         );
 
         panelCard.add(panelPayer, "panelPayer");
-
-        panelHisto.setBackground(java.awt.Color.white);
-
-        javax.swing.GroupLayout panelHistoLayout = new javax.swing.GroupLayout(panelHisto);
-        panelHisto.setLayout(panelHistoLayout);
-        panelHistoLayout.setHorizontalGroup(
-            panelHistoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
-        );
-        panelHistoLayout.setVerticalGroup(
-            panelHistoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
-        );
-
-        panelCard.add(panelHisto, "panelHisto");
-
-        panelTarif.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Gestion des pensions des retraités");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 587, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-        );
-
-        tarif.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Numero tarif", "Diplome", "Catégorie", "Montant"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tarif);
-
-        addTarif.setText("Ajouter");
-        addTarif.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addTarifActionPerformed(evt);
-            }
-        });
-
-        deleteTarif.setText("Supprimer");
-        deleteTarif.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteTarifActionPerformed(evt);
-            }
-        });
-
-        modifierTarif.setText("Modifier");
-        modifierTarif.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifierTarifActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelTarifLayout = new javax.swing.GroupLayout(panelTarif);
-        panelTarif.setLayout(panelTarifLayout);
-        panelTarifLayout.setHorizontalGroup(
-            panelTarifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTarifLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTarifLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(modifierTarif, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(deleteTarif, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(addTarif, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-        );
-        panelTarifLayout.setVerticalGroup(
-            panelTarifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTarifLayout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(panelTarifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTarif)
-                    .addComponent(deleteTarif)
-                    .addComponent(modifierTarif))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-        );
-
-        panelCard.add(panelTarif, "panelTarif");
-
-        panelAcceuil.setBackground(java.awt.Color.white);
-
-        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Gestion des pensions des retraités");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-        );
-
-        personne.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "IM", "Nom", "Prenom", "Date", "Diplome", "Contact", "Statut", "Situation", "Nom conjoint", "Prenom conjoint"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(personne);
-        if (personne.getColumnModel().getColumnCount() > 0) {
-            personne.getColumnModel().getColumn(2).setHeaderValue("Prenom");
-            personne.getColumnModel().getColumn(3).setHeaderValue("Date");
-            personne.getColumnModel().getColumn(4).setHeaderValue("Diplome");
-            personne.getColumnModel().getColumn(5).setHeaderValue("Contact");
-            personne.getColumnModel().getColumn(6).setHeaderValue("Statut");
-            personne.getColumnModel().getColumn(7).setHeaderValue("Situation");
-            personne.getColumnModel().getColumn(8).setHeaderValue("Nom conjoint");
-            personne.getColumnModel().getColumn(9).setHeaderValue("Prenom conjoint");
-        }
-
-        addPerson.setLabel("Ajouter");
-        addPerson.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addPersonActionPerformed(evt);
-            }
-        });
-
-        supprimerPersons.setText("Supprimer");
-        supprimerPersons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                supprimerPersonsActionPerformed(evt);
-            }
-        });
-
-        modifierPersons.setText("Modifier");
-        modifierPersons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifierPersonsActionPerformed(evt);
-            }
-        });
-
-        like.setText("Rechercer");
-        like.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                likeActionPerformed(evt);
-            }
-        });
-
-        statusVivant.setText("Vivant");
-        statusVivant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statusVivantActionPerformed(evt);
-            }
-        });
-
-        mort.setText("Décedé");
-        mort.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mortActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelAcceuilLayout = new javax.swing.GroupLayout(panelAcceuil);
-        panelAcceuil.setLayout(panelAcceuilLayout);
-        panelAcceuilLayout.setHorizontalGroup(
-            panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelAcceuilLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAcceuilLayout.createSequentialGroup()
-                        .addComponent(statusVivant)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mort)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(modifierPersons, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(supprimerPersons, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(addPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelAcceuilLayout.createSequentialGroup()
-                        .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(like)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelAcceuilLayout.setVerticalGroup(
-            panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAcceuilLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(like))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(panelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addPerson)
-                    .addComponent(supprimerPersons)
-                    .addComponent(modifierPersons)
-                    .addComponent(mort)
-                    .addComponent(statusVivant))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        addPerson.getAccessibleContext().setAccessibleName("addPerson");
-
-        panelCard.add(panelAcceuil, "panelAcceuil");
 
         jSplitPane1.setRightComponent(panelCard);
 
@@ -854,37 +894,43 @@ public class hello extends javax.swing.JFrame {
     }//GEN-LAST:event_deletePayerActionPerformed
 
     private void modifierPayementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierPayementActionPerformed
-        afficherDonneesTarif();
-        int selectedRow = payer.getSelectedRow();
-        if (selectedRow != -1) { // Vérifiez si une ligne est sélectionnée
+    afficherDonneesTarif();
+    int selectedRow = payer.getSelectedRow();
+    if (selectedRow != -1) { // Vérifiez si une ligne est sélectionnée
+        int columnCount = payerModel.getColumnCount();
+        
+        if (columnCount >= 3) { // Vérifiez que le modèle a au moins 4 colonnes
             // Récupérer les données de la personne sélectionnée
-            String Im = (String) payerModel.getValueAt(selectedRow, 1);
-            String numTarif = (String) payerModel.getValueAt(selectedRow, 2);
-            String dateString = (String) payerModel.getValueAt(selectedRow, 3);
+            String Im = (String) payerModel.getValueAt(selectedRow, 0);
+            String numTarif = (String) payerModel.getValueAt(selectedRow, 1);
+            String dateString = (String) payerModel.getValueAt(selectedRow, 2);
             Date date = null;
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Le format de votre date
                 date = dateFormat.parse(dateString);
             } catch (ParseException ex) {
-                ex.printStackTrace(); // Ou toute autre gestion appropriée des erreurs de conversion
+                ex.printStackTrace(); 
             }
-            
+
             addPayerWindow.remplirChampsPayer(Im, numTarif, date);
             addPayerWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             addPayerWindow.setLocationRelativeTo(null);
             addPayerWindow.setVisible(true);
-        
-        // Ajouter un WindowListener pour rafraîchir les données après la fermeture de la fenêtre
+
+            // Ajouter un WindowListener pour rafraîchir les données après la fermeture de la fenêtre
             addPayerWindow.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                // Rafraîchir les données affichées dans le JTable
-                afficherDonneesPayer();
-            }
-        });
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    // Rafraîchir les données affichées dans le JTable
+                    afficherDonneesPayer();
+                }
+            });
         } else {
-        JOptionPane.showMessageDialog(this, "Veuillez sélectionner un payement à modifier.", "Aucun payement sélectionnée", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Le modèle de données ne contient pas suffisamment de colonnes.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
+    } else {
+        JOptionPane.showMessageDialog(this, "Veuillez sélectionner un paiement à modifier.", "Aucun paiement sélectionné", JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_modifierPayementActionPerformed
 
     private void detail_payerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detail_payerActionPerformed
@@ -922,7 +968,7 @@ public class hello extends javax.swing.JFrame {
 
     private void histoireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_histoireActionPerformed
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        
+
     // Connexion à la base de données
     Connection connection = null;
     PreparedStatement preparedStatement = null;
@@ -932,10 +978,13 @@ public class hello extends javax.swing.JFrame {
         // Connexion à la base de données
         connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Java", "postgres", "madarauchiwa");
 
-        // Requête SQL pour récupérer les données
-        String query = "SELECT EXTRACT(YEAR FROM date_paiement) AS annee, SUM(montant) AS total " +
+        // Requête SQL pour récupérer les données de paiement et vérifier le statut
+        String query = "SELECT EXTRACT(YEAR FROM PAYER.date_paiement) AS annee, " +
+                       "SUM(CASE WHEN PERSONNE.statut::boolean = false AND PERSONNE.situation = 'marié(e)' " +
+                       "THEN TARIF.montant * 0.4 ELSE TARIF.montant END) AS total " +
                        "FROM PAYER " +
                        "JOIN TARIF ON PAYER.num_tarif = TARIF.num_tarif " +
+                       "JOIN PERSONNE ON PAYER.IM = PERSONNE.IM " +
                        "GROUP BY annee";
 
         // Préparation de la requête
@@ -950,7 +999,7 @@ public class hello extends javax.swing.JFrame {
             int montantTotal = resultSet.getInt("total");
             dataset.addValue(montantTotal, "Montant total", annee);
         }
-        
+
     } catch (SQLException e) {
         e.printStackTrace();
         // Gestion des exceptions SQL
@@ -1085,7 +1134,25 @@ public class hello extends javax.swing.JFrame {
 
     private void actualiséActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualiséActionPerformed
         afficherDonneesPayer();
+        afficherDonneesPersonne();
+        afficherDonneesTarif();
     }//GEN-LAST:event_actualiséActionPerformed
+
+    private void actualisé1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualisé1ActionPerformed
+        afficherDonneesPayer();
+        afficherDonneesPersonne();
+        afficherDonneesTarif();
+    }//GEN-LAST:event_actualisé1ActionPerformed
+
+    private void actualisé2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualisé2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualisé2ActionPerformed
+
+    private void actuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actuaActionPerformed
+        afficherDonneesPayer();
+        afficherDonneesPersonne();
+        afficherDonneesTarif();
+    }//GEN-LAST:event_actuaActionPerformed
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1096,7 +1163,10 @@ public class hello extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actua;
     private javax.swing.JButton actualisé;
+    private javax.swing.JButton actualisé1;
+    private javax.swing.JButton actualisé2;
     private javax.swing.JButton addPerson;
     private javax.swing.JButton addTarif;
     private com.toedter.calendar.JDateChooser date1;

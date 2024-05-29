@@ -102,28 +102,50 @@ private static String generateRandomNumPension() {
     return String.valueOf(num);
 }
 
-    public static boolean supprimerPersonne(String IM, Connection connection) {
+public static boolean supprimerPersonne(String IM, Connection connection) {
     boolean suppressionReussie = false;
     try {
-        // Préparer la requête de suppression
-        String sql = "DELETE FROM PERSONNE WHERE IM = ?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        // Remplir les paramètres de la requête
-        statement.setString(1, IM);
-        // Exécuter la requête
-        int rowsDeleted = statement.executeUpdate();
+        // Commencer une transaction
+        connection.setAutoCommit(false);
+
+        // Supprimer les enregistrements dépendants dans la table CONJOINT
+        String sqlConjoint = "DELETE FROM CONJOINT WHERE IM = ?";
+        PreparedStatement statementConjoint = connection.prepareStatement(sqlConjoint);
+        statementConjoint.setString(1, IM);
+        statementConjoint.executeUpdate();
+
+        // Supprimer la personne dans la table PERSONNE
+        String sqlPersonne = "DELETE FROM PERSONNE WHERE IM = ?";
+        PreparedStatement statementPersonne = connection.prepareStatement(sqlPersonne);
+        statementPersonne.setString(1, IM);
+        int rowsDeleted = statementPersonne.executeUpdate();
+        
         if (rowsDeleted > 0) {
             System.out.println("Personne supprimée avec succès !");
             suppressionReussie = true;
+            connection.commit();
         } else {
             System.out.println("Aucune personne correspondante trouvée pour la suppression.");
+            connection.rollback();
         }
     } catch (SQLException e) {
         e.printStackTrace();
         System.err.println("Erreur lors de la suppression de la personne de la base de données !");
+        try {
+            connection.rollback();
+        } catch (SQLException rollbackEx) {
+            rollbackEx.printStackTrace();
+        }
+    } finally {
+        try {
+            connection.setAutoCommit(true);
+        } catch (SQLException autoCommitEx) {
+            autoCommitEx.printStackTrace();
+        }
     }
     return suppressionReussie;
 }
+
     public static boolean modifierPersonne(Personne personne, Connection connection) {
     boolean modificationReussie = false;
     try {

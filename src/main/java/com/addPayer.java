@@ -130,19 +130,28 @@ public class addPayer extends javax.swing.JFrame {
         
         // Récupération du diplôme de la personne sélectionnée
         String diplome = null;
+        boolean statut = true;
+        String nm = null;
         Connection connection = null;
         try {
             // Récupération du diplôme
             connection = bd.getConnection("jdbc:postgresql://localhost:5432/Java", "postgres", "madarauchiwa");
-            String sql = "SELECT Diplome FROM PERSONNE WHERE IM = ?";
+            String sql = "SELECT Diplome,Statut,nomConjoint FROM PERSONNE WHERE IM = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, im);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()) {
                 diplome = resultSet.getString("Diplome");
-            } else {
+                statut = resultSet.getBoolean("Statut");
+                nm = resultSet.getString("nomConjoint");
+            }else {
                 // Gérer le cas où aucun diplôme n'est trouvé
                 JOptionPane.showMessageDialog(null, "Aucun diplôme trouvé pour cet IM.");
+                return;
+            }
+            
+            if(nm == null && !statut ){
+                JOptionPane.showMessageDialog(null, "Aucun conjoint en cas de décès");
                 return;
             }
             // Récupération du numéro de tarif en fonction du diplôme de la personne
@@ -151,7 +160,7 @@ public class addPayer extends javax.swing.JFrame {
             statement = connection.prepareStatement(sql);
             statement.setString(1, diplome);
             resultSet = statement.executeQuery();
-            if(resultSet.next()) {
+            if(resultSet.next()){
                 numTarif = resultSet.getString("Num_tarif");
             } else {
                 // Gérer le cas où aucun numéro de tarif n'est trouvé
@@ -194,16 +203,20 @@ public class addPayer extends javax.swing.JFrame {
 
         // Récupération du diplôme de la personne sélectionnée
         String diplome = null;
+        boolean statut = true;
+        String nm = null;
         Connection connection = null;
         try {
             // Récupération du diplôme
             connection = bd.getConnection("jdbc:postgresql://localhost:5432/Java", "postgres", "madarauchiwa");
-            String sql = "SELECT Diplome FROM PERSONNE WHERE IM = ?";
+            String sql = "SELECT Diplome,Statut,nomConjoint FROM PERSONNE WHERE IM = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, im);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()) {
                 diplome = resultSet.getString("Diplome");
+                statut = resultSet.getBoolean("Statut");
+                nm = resultSet.getString("nomConjoint");
             } else {
                 // Gérer le cas où aucun diplôme n'est trouvé
                 JOptionPane.showMessageDialog(null, "Aucun diplôme trouvé pour cet IM.");
@@ -221,6 +234,11 @@ public class addPayer extends javax.swing.JFrame {
             } else {
                 // Gérer le cas où aucun numéro de tarif n'est trouvé
                 JOptionPane.showMessageDialog(null, "Aucun numéro de tarif trouvé pour ce diplôme.");
+                return;
+            }
+            
+            if(nm == null && !statut ){
+                JOptionPane.showMessageDialog(null, "Aucun conjoint en cas de décès");
                 return;
             }
 
@@ -254,15 +272,15 @@ public class addPayer extends javax.swing.JFrame {
         }
     }
     
-
     }//GEN-LAST:event_AjouterPayementActionPerformed
     public void remplirChampsPayer(String IM, String numTarif, Date date) {
+        chargerIM();
         IM_payer.setSelectedItem(IM);
         dateDePayement.setDate(date);
         AjouterPayement.setText("Modifier");   
     }
     
-    public void chargerIM() {
+    public final void chargerIM() {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -284,7 +302,6 @@ public class addPayer extends javax.swing.JFrame {
     } catch (SQLException e) {
         e.printStackTrace();
     } finally {
-        // Fermer les ressources
         try {
             if (resultSet != null) {
                 resultSet.close();
